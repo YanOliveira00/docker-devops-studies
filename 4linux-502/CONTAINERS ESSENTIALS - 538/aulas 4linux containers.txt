@@ -1,0 +1,83 @@
+docker container ls --all > Lista todos os containers 
+docker start nome -> Start um container parado
+docker run imagem -> roda a imagem definida
+docker stop nome -> stopa um container nome rodando
+docker container rm nome -> Remove container nome, inclusive parado
+docker container rm --force nome -> Remove container nome que esteja rodando, inclusive parado
+
+172.17.0.0 /16 - ip docker
+172.17.0.1 - ip m[aquina host
+
+docker inspect nome -> Lista todos os detalhes do container. 
+docker container exec --tty --interactive nome bash -> Executa um comando em um container nome, --tty cria um novo terminal virtual --interactive cria um I/O com o nosso teclado ; bash -> comando pedido para rodar
+
+docker image pull nome -> baixa a imagem docker para o local
+docker image ls -> lista imagens
+docker image rm nome -> remove imagem nome
+
+docker image pull nome:tag -> baixa uma release espec[ifica de uma imagem		
+docker run --detach nome -> inicia container sem travar terminal, rodar em background.
+
+
+docker volume ls - Lista volumes criados no docker
+docker volume creat - Cria volumes exclusivos para o docker
+
+criando dockerfile:
+
+criar com vim
+dockerfile references para montagem
+
+docker build --tag nome . (na pasta do dockerfile)
+
+registry - guarda as imagens do docker usadas. 
+nexus sonartype, dockerhub, etc...
+
+docker login (logar no docker)
+docker images tag imagem1 imagem2 - muda o nome da imagem de imagem1 para imagem2
+docker push imagem - ap[os estar logado, pode dar push da imagem para o dockerhub (precisa de nome proprio)
+docker pull imagem - baixar imagem do docker hub.
+
+docker compose - 
+
+docker rm -f $(docker ps -qa) - apaga todos os containers.
+docker-compose up - sobe um arquivo docker compose.
+docker-compose down - desliga os containers.
+docker-compose ps - lista os container do compose.
+
+revisao: 
+docker container run --volume /home/yoliveira/exemplo:/var/www/html imagem
+
+docker container run --publish portahost:portacont imagem -> expor container para a maquina
+
+docker container run -e xxxx imagem -> seta varivavel de ambiente na imagem ao iniciar.
+
+docker image build -t nome . -> Busca Dockerfile e builda imagem no local
+docker image build -t nome -f pathdodockerfile -> Busca Dockerfile e builda imagem buscando no caminho fora da pasta atual.
+
+'WORKDIR /opt/teste' dentro do dockerfile -> diz o diretorio de trabalho.
+
+O Docker Compose possui alguns comandos a serem utilizados para garantir toda essa facilidade no provisionamento e gerenciamento dos contêineres, vejamos então os principais:
+
+    docker-compose up: cria e inicia os contêineres;
+    docker-compose build: realiza apenas a etapa de build das imagens que serão utilizadas;
+    docker-compose logs: visualiza os logs dos contêineres;
+    docker-compose restart: reinicia os contêineres;
+    docker-compose ps: lista os contêineres;
+    docker-compose scale: permite aumentar o número de réplicas de um contêiner;
+    docker-compose start: inicia os contêineres;
+    docker-compose stop: paralisa os contêineres;
+    docker-compose down: paralisa e remove todos os contêineres e seus componentes como rede, imagem e volume.
+
+
+atalhos linux
+ctrl l -> clear
+ctrl p e q -> coloca o container em background se vc tiver dentro dele.
+curl ip -> Testa url
+
+curl -I url -> Infos sobre a URL
+sed => Stream editor EX.: sed 's/palavra1/palavra2' textoqualquer.txt
+substitui palavra1 por palavra 2 no arquivo.
+
+
+Estudar Orquestadores, Volumes distribuidos, Load Balancer (HAProxy Traefik). Buscar outras ferramentas tipo podman.
+
